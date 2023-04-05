@@ -13,3 +13,10 @@ export interface Task {
   incharge_user: string;
   percentage: number;
 }
+
+export interface CategoryTask {
+  id: number;
+  name: string;
+  collapsed?: boolean;
+  tasks: Task[];
+}
