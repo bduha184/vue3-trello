@@ -1,10 +1,18 @@
 <script setup lang="ts">
-import type { CategoryTask } from '@/types';
+import type { CategoryTask, Task } from '@/types';
 import TaskItem from './TaskItem.vue';
 
 defineProps<{
   categoryTask:CategoryTask;
 }>();
+
+const emit = defineEmits<{
+  (e:"setDragTask",task:Task):void;
+}>();
+
+const setDragTask = (task:Task)=> {
+  emit("setDragTask",task);
+}
 
 </script>
 <template>
@@ -15,6 +23,8 @@ defineProps<{
     :key="task.id"
     :task="task"
     class="m-2 bg-white p-2"
+    draggable="true"
+    @dragstart="setDragTask"
     />
   </div>
 </template>

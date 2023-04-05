@@ -7,6 +7,7 @@ import CategoryItems from '@/components/CategoryItem.vue';
 
 const categories = ref<Category[]>(category_data);
 const tasks = ref<Task[]>(task_data);
+const dragTask = ref<Task | null>(null);
 
 const renderCategoryTask = computed<CategoryTask[]>(()=> {
   return categories.value.map(category => {
@@ -21,6 +22,10 @@ const renderCategoryTask = computed<CategoryTask[]>(()=> {
   });
 })
 
+const setDragTask = (task:Task)=> {
+  dragTask.value = task;
+}
+
 </script>
 
 <template>
@@ -32,6 +37,7 @@ const renderCategoryTask = computed<CategoryTask[]>(()=> {
         v-for="categoryTask in renderCategoryTask"
         :key="categoryTask.id"
         :categoryTask="categoryTask"
+        @setDragTask="setDragTask"
       />
     </div>
  </div>
