@@ -40,6 +40,16 @@ const dragOverTask = (overTask:Task)=> {
   }
 }
 
+const dragOverCategory = (categoryTask: CategoryTask) => {
+  if (dragTask.value?.category_id !== categoryTask.id) {
+    const filterTasks = tasks.value.filter(
+      (task) => task.category_id === categoryTask.id
+    );
+    if (filterTasks.length === 0 && dragTask.value !== null)
+      dragTask.value.category_id = categoryTask.id;
+  }
+};
+
 </script>
 
 <template>
@@ -53,6 +63,7 @@ const dragOverTask = (overTask:Task)=> {
         :categoryTask="categoryTask"
         @setDragTask="setDragTask"
         @dragOverTask="dragOverTask"
+        @dragover="dragOverCategory(categoryTask)"
       />
     </div>
  </div>
