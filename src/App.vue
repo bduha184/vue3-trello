@@ -26,6 +26,19 @@ const setDragTask = (task:Task)=> {
   dragTask.value = task;
 }
 
+const dragOverTask = (overTask:Task)=> {
+  if (dragTask.value?.id !== overTask.id) {
+    const deleteIndex = tasks.value.findIndex(
+      (task) => task.id === dragTask.value?.id
+    );
+    const addIndex = tasks.value.findIndex((task) => task.id === overTask.id);
+    if (dragTask.value !== null) {
+      tasks.value.splice(deleteIndex, 1);
+      tasks.value.splice(addIndex, 0, dragTask.value);
+    }
+  }
+}
+
 </script>
 
 <template>
@@ -38,6 +51,7 @@ const setDragTask = (task:Task)=> {
         :key="categoryTask.id"
         :categoryTask="categoryTask"
         @setDragTask="setDragTask"
+        @dragOverTask="dragOverTask"
       />
     </div>
  </div>

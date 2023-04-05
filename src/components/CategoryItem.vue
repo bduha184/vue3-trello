@@ -8,10 +8,15 @@ defineProps<{
 
 const emit = defineEmits<{
   (e:"setDragTask",task:Task):void;
+  (e:"dragOverTask",task:Task):void;
 }>();
 
 const setDragTask = (task:Task)=> {
   emit("setDragTask",task);
+}
+
+const dragOverTask = (task:Task)=> {
+  emit("dragOverTask",task);
 }
 
 </script>
@@ -24,7 +29,8 @@ const setDragTask = (task:Task)=> {
     :task="task"
     class="m-2 bg-white p-2"
     draggable="true"
-    @dragstart="setDragTask"
+    @dragstart="setDragTask(task)"
+    @dragover="dragOverTask(task)"
     />
   </div>
 </template>
