@@ -34,6 +34,7 @@ const dragOverTask = (overTask:Task)=> {
     const addIndex = tasks.value.findIndex((task) => task.id === overTask.id);
     if (dragTask.value !== null) {
       tasks.value.splice(deleteIndex, 1);
+      dragTask.value.category_id = overTask.category_id; //追加
       tasks.value.splice(addIndex, 0, dragTask.value);
     }
   }
