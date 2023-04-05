@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import category_data from './data/categories.json';
-import task_data from './data/tasks.json';
+import category_data from '@/data/categories.json';
+import task_data from '@/data/tasks.json';
 import {ref,computed} from 'vue';
 import type {Category,Task,CategoryTask} from './types/';
 import CategoryItems from '@/components/CategoryItem.vue';
@@ -11,7 +11,7 @@ const tasks = ref<Task[]>(task_data);
 const renderCategoryTask = computed<CategoryTask[]>(()=> {
   return categories.value.map(category => {
     const filterTasks = tasks.value.filter(
-      task => task_data.category_id === category.id
+      task => task.category_id === category.id
     );
     return {
       id:category.id,

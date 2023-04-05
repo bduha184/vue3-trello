@@ -1,22 +1,22 @@
 export interface Category {
-  id:number;
-  name:string;
-  collapsed?:boolean;
+  id:number,
+  name:string,
+  collapsed?:boolean,
 }
 
 export interface Task {
-  id: number;
-  category_id: number;
-  name: string;
-  start_date: string;
-  end_date: string;
-  incharge_user: string;
-  percentage: number;
+  id: number,
+  category_id: number,
+  name: string,
+  start_date: string,
+  end_date: string,
+  incharge_user: string,
+  percentage: number
 }
 
 export interface CategoryTask {
-  id: number;
-  name: string;
-  collapsed?: boolean;
-  tasks: Task[];
+  id: number,
+  name: string,
+  collapsed?: boolean,
+  tasks: Task[],
 }
