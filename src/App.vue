@@ -4,6 +4,7 @@ import task_data from '@/data/tasks.json';
 import {ref,computed} from 'vue';
 import type {Category,Task,CategoryTask} from './types/';
 import CategoryItems from '@/components/CategoryItem.vue';
+import AddCategory from '@/components/AddCategory.vue';
 
 const categories = ref<Category[]>(category_data);
 const tasks = ref<Task[]>(task_data);
@@ -65,6 +66,7 @@ const dragOverCategory = (categoryTask: CategoryTask) => {
         @dragOverTask="dragOverTask"
         @dragover="dragOverCategory(categoryTask)"
       />
+      <AddCategory/>
     </div>
  </div>
 </template>

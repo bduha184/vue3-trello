@@ -2,6 +2,7 @@
 import type { CategoryTask, Task } from '@/types';
 import TaskItem from './TaskItem.vue';
 
+
 defineProps<{
   categoryTask:CategoryTask;
 }>();
@@ -33,4 +34,5 @@ const dragOverTask = (task:Task)=> {
     @dragover="dragOverTask(task)"
     />
   </div>
+
 </template>
